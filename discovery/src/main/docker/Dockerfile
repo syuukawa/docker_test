@@ -1,4 +1,4 @@
-FROM java:8
+FROM openjdk:8-jdk
 VOLUME /tmp
 ADD discovery.jar app.jar
 RUN bash -c 'touch /app.jar'
