@@ -1,23 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>SpringCloudDocker</artifactId>
-        <groupId>com.syuukawa.cloud</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <artifactId>immerex</artifactId>
+        <groupId>immerex</groupId>
+        <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>discovery</artifactId>
     <packaging>jar</packaging>
 
+    <name>discovery</name>
+    <url>http://maven.apache.org</url>
+
     <properties>
-        <start-class>com.syuukawa.cloud.DisApplication</start-class>
+        <start-class>com.zhidian.ecommerce.DiscoveryApplication</start-class>
     </properties>
 
     <dependencies>
-        <!-- springboot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -29,8 +29,9 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
-        <!-- springcloud -->
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter</artifactId>
@@ -38,11 +39,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.5</version>
         </dependency>
     </dependencies>
 
@@ -53,26 +49,19 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>${start-class}</mainClass>
+                    <fork>true</fork>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
+             <!--docker的maven插件，官网：https://github.com/spotify/docker-maven-plugin-->
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.12</version>
                 <configuration>
-                    <imageName>syuukawa/microservice-${project.artifactId}</imageName>
-                    <imageTags>
-                        <imageTag>latest</imageTag>
-                    </imageTags>
-                    <forceTags>true</forceTags>
+                    <!-- 注意imageName一定要是符合正则[a-z0-9-_.]的，否则构建不会成功 -->
+                    <!-- 详见：https://github.com/spotify/docker-maven-plugin    Invalid repository name ... only [a-z0-9-_.] are allowed-->
+                    <imageName>discovery</imageName>
+                    <!-- 指定Dockerfile所在的路径 -->
                     <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
                     <resources>
                         <resource>
@@ -84,5 +73,56 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>env_dev/*</exclude>
+                    <exclude>env_test/*</exclude>
+                    <exclude>env_docker/*</exclude>
+                    <exclude>env_awstest/*</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources/env_${profileActive}</directory>
+            </resource>
+        </resources>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profileActive>dev</profileActive>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>docker</id>
+            <properties>
+                <profileActive>docker</profileActive>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <profileActive>test</profileActive>
+            </properties>
+        </profile>
+        <profile>
+            <id>awstest</id>
+            <properties>
+                <profileActive>awstest</profileActive>
+            </properties>
+        </profile>
+        <profile>
+            <id>alitest</id>
+            <properties>
+                <profileActive>alitest</profileActive>
+            </properties>
+        </profile>
+    </profiles>
 </project>
