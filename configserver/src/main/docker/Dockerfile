@@ -1,6 +1,6 @@
 FROM java:8
 VOLUME /tmp
-ADD configserver.jar app.jar
-RUN bash -c 'touch /app.jar'
+ADD configserver.jar configserver.jar
+RUN bash -c 'touch /configserver.jar'
 EXPOSE 8888
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/configserver.jar"]

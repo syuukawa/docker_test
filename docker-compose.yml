@@ -6,4 +6,14 @@ discovery:
   - /temp:/temp
  environment:
   - JAVA_OPTS="-Xms5000m -Xmx10000m"
- command: bash -c "java -jar /app.jar"
+ command: bash -c "java -jar /discovery.jar"
+
+ configserver:
+  image: syuukawa/microservice-configserver:latest
+  ports:
+   - 8888:8888
+  volumes:
+   - /temp:/temp
+  environment:
+   - JAVA_OPTS="-Xms5000m -Xmx10000m"
+  command: bash -c "java -jar /configserver.jar"

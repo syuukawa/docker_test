@@ -1,6 +1,6 @@
 FROM java:8
 VOLUME /tmp
-ADD discovery.jar app.jar
-RUN bash -c 'touch /app.jar'
+ADD discovery.jar discovery.jar
+RUN bash -c 'touch /discovery.jar'
 EXPOSE 8761
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/discovery.jar"]
