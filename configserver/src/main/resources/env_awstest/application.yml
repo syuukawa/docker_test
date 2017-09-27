@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    name:
+      CONFIG
+    config:
+      server:
+        native:
+#          search-locations: classpath:/config
+          search-locations: ./config
+#          search-locations: config/ /home/ec2-user/config

@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: /opt/spring-F2FPay/config
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    password: test
+    username: test
+    virtual-host: test
+    requested-heartbeat: 5
