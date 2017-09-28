@@ -7,7 +7,7 @@ spring:
   application:
     name: configserver
   profiles:
-    active: native
+    active: @profileActive@
   jackson:
     serialization:
       indent_output: true
@@ -16,7 +16,7 @@ eureka:
   instance:
 #    leaseRenewalIntervalInSeconds: 5  #心跳间隔
 #    lease-expiration-duration-in-seconds: 20
-    preferIpAddress: true
+#    preferIpAddress: true
 #    secure-port: 443
     non-secure-port: ${server.port:8888}
 #    statusPageUrlPath: ${server.context-path}/info
