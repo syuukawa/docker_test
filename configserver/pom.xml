@@ -120,7 +120,7 @@
             <id>dev</id>
             <properties>
                 <profileActive>dev</profileActive>
-                <eurekaHost>eurekaHost.immersvr.net</eurekaHost>
+                <eurekaHost>localhost</eurekaHost>
                 <eurekaPort>8761</eurekaPort>
             </properties>
             <activation>
