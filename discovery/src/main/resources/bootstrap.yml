@@ -12,7 +12,7 @@ server:
 
 eureka:
   instance:
-#    hostname: discovery
+    hostname: discovery
     metadataMap: 
       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   server:
@@ -25,6 +25,8 @@ eureka:
   client:
     register-with-eureka: false
     fetch-registry: false #是否从eureka服务器获取注册信息
+    serviceUrl:
+          defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 #  server:
 #    waitTimeInMsWhenSyncEmpty: 0
 #    enableSelfPreservation: false
