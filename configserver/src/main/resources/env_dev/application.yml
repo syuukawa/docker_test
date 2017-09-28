@@ -11,6 +11,8 @@ spring:
 #          search-locations: file:/D:\immerex\immerex\configserver\src\main\resources\config
           search-locations: ./config
 #          search-locations: /immerex/config
+        git:
+          uri: https://github.com/kbastani/spring-boot-microservice-config
 
 #  rabbitmq:
 #    host: 192.168.0.108
