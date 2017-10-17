@@ -4,15 +4,15 @@ spring:
       CONFIG
     config:
       server:
-        native:
+#        native:
 #          search-locations: classpath:/config
 #          search-locations: /Users/zhangjiming/IdeaProjects/immerex/configserver/src/main/resources/config
 #          search-locations: /root/vrimmerex/config
 #          search-locations: file:/D:\immerex\immerex\configserver\src\main\resources\config
-          search-locations: ./config
+#          search-locations: ./config
 #          search-locations: /immerex/config
         git:
-          uri: https://github.com/kbastani/spring-boot-microservice-config
+          uri: https://github.com/syuukawa/docker_test/tree/master/configserver/src/main/resources/config
 
 #  rabbitmq:
 #    host: 192.168.0.108
