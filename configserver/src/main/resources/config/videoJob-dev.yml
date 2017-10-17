@@ -1,0 +1,86 @@
+spring:
+  rabbitmq:
+    host: 192.168.0.108
+    port: 5672
+    password: zhouhe
+    username: zhouhe
+    virtual-host: zhouhe
+    requested-heartbeat: 5
+    listener:
+      concurrency: 2
+      max-concurrency: 5
+      acknowledge-mode: manual
+  c3p0:
+    driverClass: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://192.168.0.108:3306/videoJob?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    user: root
+    password: 123456789
+    acquireIncrement: 1
+    initialPoolSize: 2
+    maxIdleTime: 2
+    maxPoolSize: 2
+    minPoolSize: 2
+    acquireRetryDelay: 1000
+    acquireRetryAttempts: 60
+    minPoolSizebreakAfterAcquireFailure: false
+#  redis:
+#    cluster:
+#      nodes:
+#        - 192.168.0.108:7000
+#        - 192.168.0.108:7001
+#        - 192.168.0.108:7002
+#        - 192.168.0.108:7003
+#        - 192.168.0.108:7004
+#        - 192.168.0.108:7005
+#      max-redirects: 10
+#      timeout: 5000
+#      max-total: 300
+#      max-idle: 20
+#      max-wait-millis: 1000
+#      test-on-borrow: true
+#      test-on-return: true
+##      db-index: 1
+  redis:
+    database: 0
+    host: 192.168.0.108
+    port: 6379
+    password:
+    max-total: 5
+    max-idle: 2
+    min-idle: 2
+    max-active: 5
+    max-wait: -1
+    max-wait-millis: 1000
+    test-on-borrow: true
+    test-on-return: true
+  custom:
+    test: a
+encrypt:
+  globalKey: 661ee319dff061d4fb6532787f7b6927
+  passSalt: w1fsd2DurO0
+keyencode:
+  DESede: 68EC34C420E6CDA1511A2A40CE94897FA2089EAD6E15D62C
+
+aws:
+  credentials:
+    accessKey: AKIAIC2LLSVASGSXMTIQ
+    secretAccessKey: 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
+    region: us-west-1
+    videoBucketName: video-hls-test2
+    domain: http://camera.immerex-test.com
+    keyPairId: APKAJDTCREWHG27ILCPQ
+    privateKeyFilePath: /Users/zhangjiming/amazon/huangzhen/aws-cloudfront-pk.der
+  deployment:
+    domain: http://localhost:8383
+
+aliyun:
+  credentials:
+    accessKeyId: LTAI2exYlKTFm1j5
+    secretAccessKey: wPMCQL7OnnNgVyhTIDIyZDWpz4tgPW
+    endpoint: http://oss-cn-shanghai.aliyuncs.com
+    videoBucketName: immerex-content
+    domain: http://immerex-camera.oss-cn-shanghai.aliyuncs.com
+  deployment:
+    domain: http://localhost:8383
+
+

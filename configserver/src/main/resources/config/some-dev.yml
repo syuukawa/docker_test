@@ -1,0 +1,15 @@
+my:
+  message: some from dev
+  
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    password: test
+    username: test
+    virtual-host: test
+    requested-heartbeat: 5
+
+#server:
+#  context-path: /spring-some
+  

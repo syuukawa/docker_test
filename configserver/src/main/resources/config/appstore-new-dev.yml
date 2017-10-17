@@ -1,0 +1,98 @@
+#RabbitMQ property set
+spring:
+#  rabbitmq:
+#    host: 192.168.0.108
+#    port: 15672
+#    password: zhouhe
+#    username: zhouhe
+#    virtual-host: zhouhe
+#    requested-heartbeat: 5
+#    listener:
+#      concurrency: 2
+#      max-concurrency: 5
+#      acknowledge-mode: manual
+#C3P0 property set
+  c3p0:
+    driverClass: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://192.168.0.238:3306/immerex_ecommerce_new02?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    user: root
+    password: 123456789
+    acquireIncrement: 1
+    initialPoolSize: 2
+    maxIdleTime: 2
+    maxPoolSize: 2
+    minPoolSize: 2
+    acquireRetryDelay: 1000
+    acquireRetryAttempts: 60
+    minPoolSizebreakAfterAcquireFailure: false
+#多数据源配置的设定
+#Redis property set
+#  redis:
+#    cluster:
+#      nodes:
+#        - 192.168.0.108:7000
+#        - 192.168.0.108:7001
+#        - 192.168.0.108:7002
+#        - 192.168.0.108:7003
+#        - 192.168.0.108:7004
+#        - 192.168.0.108:7005
+#      max-redirects: 10
+#      timeout: 60000
+#      max-total: 300
+#      max-idle: 20
+#      max-wait-millis: 1000
+#      test-on-borrow: true
+#      test-on-return: true
+  redis:
+    database: 0
+    host: 192.168.0.238
+    port: 6379
+    password:
+    max-total: 5
+    max-idle: 2
+    min-idle: 2
+    max-active: 5
+    max-wait: -1
+    max-wait-millis: 1000
+    test-on-borrow: true
+    test-on-return: true
+  custom:
+    test: a
+
+#      db-index: 1
+#  custom:
+#    test: a
+#server:
+#  context-path: /spring-some
+
+aws:
+  credentials:
+    accessKey: AKIAIC2LLSVASGSXMTIQ
+    secretAccessKey: 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
+  s3:
+    region: us-west-1
+    web_commerce_static_bucket_name: web-commerce-static-536df403-fbd5-45ab-8ab3-551a5997cb6e
+    web_store_static_bucket_name: web-store-static-536df403-fbd5-45ab-8ab3-551a5997cb6e
+    store_app_bucket_name: store-app-file-536df403-fbd5-45ab-8ab3-551a5997cb6e
+    store_content_bucket_name: store-content-file-536df403-fbd5-45ab-8ab3-551a5997cb6e
+  cdn:
+    storeAppDistributionDomain: http://d16ibtie31j82f.cloudfront.net
+    storeContentDistributionDomain: http://d3lx6xyw1zwr0r.cloudfront.net
+    keyPairId: APKAJDTCREWHG27ILCPQ
+    privateKeyFilePath: D:\immerex\immerex\appstore-new\src\main\resources\aws-cloudfront-pk.der
+#    privateKeyFilePath: D:\immerex\immerex-appstore\configserver\src\main\resources\config\aws-cloudfront-pk.der
+
+aliyun:
+  credentials:
+    accessKeyId: LTAI2exYlKTFm1j5
+    secretAccessKey: wPMCQL7OnnNgVyhTIDIyZDWpz4tgPW
+  oss:
+    endpoint: http://oss-cn-shanghai.aliyuncs.com
+    imxhomeBucketName: immerex-imxhome
+  cdn:
+    domain: http://vrcamera.cias.net.cn
+
+sessionVr:
+  duration: 12 #表示小时数
+tokenVr:
+  duration:  168 #7*24表示天数

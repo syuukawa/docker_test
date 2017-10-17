@@ -1,0 +1,91 @@
+#mybatis:
+#  config-location: classpath:mybatis-config.xml
+
+
+#redis cluster
+#redis:
+#  cache:
+#    clusterNodes: localhost:8080
+#    commandTimeout: 5
+#    expireSeconds: 120
+templates:
+  path: /opt/templates
+
+# ip地址库
+ipdata:
+  path: /opt/templates
+
+# 分块上传
+multipartupload:
+  tmp: /opt/tmp
+  prefix: tmp
+  blockRetentionTime: 24  #块保留时间,小时
+  aliyunUrl: http://192.168.0.238:8383   #阿里云分块上传接口地址(负载均衡服务地址)
+  awsUrl: http://192.168.0.238:8383      #亚马逊云分块上传接口地址(负载均衡服务地址)
+
+spring:
+  c3p0:
+    driverClass: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://192.168.0.108:3306/camera?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    user: root
+    password: 123456789
+    acquireIncrement: 1
+    initialPoolSize: 2
+    maxIdleTime: 2
+    maxPoolSize: 2
+    minPoolSize: 2
+    acquireRetryDelay: 1000
+    acquireRetryAttempts: 60
+    minPoolSizebreakAfterAcquireFailure: false
+#  redis:
+#    cluster:
+#      nodes:
+#        - 192.168.0.108:7000
+#        - 192.168.0.108:7001
+#        - 192.168.0.108:7002
+#        - 192.168.0.108:7003
+#        - 192.168.0.108:7004
+#        - 192.168.0.108:7005
+#      max-redirects: 10
+#      timeout: 5000
+#      max-total: 300
+#      max-idle: 20
+#      max-wait-millis: 1000
+#      test-on-borrow: true
+#      test-on-return: true
+
+  redis:
+    database: 0
+    host: 192.168.0.108
+    port: 6379
+    password:
+    max-total: 5
+    max-idle: 2
+    min-idle: 2
+    max-active: 5
+    max-wait: -1
+    max-wait-millis: 1000
+    test-on-borrow: true
+    test-on-return: true
+
+aws:
+  credentials:
+    accessKey: AKIAIC2LLSVASGSXMTIQ
+    secretAccessKey: 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
+  s3:
+    region: us-west-1
+    cameraBucketName: camerabucket29572341
+  cdn:
+    domain: http://camera.immerex-test.com
+    keyPairId: APKAJDTCREWHG27ILCPQ
+    privateKeyFilePath: /opt/aws-cloudfront-pk.der
+
+aliyun:
+  credentials:
+    accessKeyId: LTAI2exYlKTFm1j5
+    secretAccessKey: wPMCQL7OnnNgVyhTIDIyZDWpz4tgPW
+  oss:
+    endpoint: http://oss-cn-shanghai.aliyuncs.com
+    cameraBucketName: immerex-camera
+  cdn:
+    domain: http://vrcamera.cias.net.cn
