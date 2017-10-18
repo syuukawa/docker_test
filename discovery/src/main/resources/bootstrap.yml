@@ -23,13 +23,16 @@ eureka:
     # 每隔X秒钟就把注册状态为DOWN的实例清除掉，设置为0时这个线程就不工作了
     eviction-interval-timer-in-ms: 30000
   client:
-    register-with-eureka: false
-    fetch-registry: false #是否从eureka服务器获取注册信息
-    serviceUrl:
-          defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    enabled: true
+    register-with-eureka: true
+    fetch-registry: true #是否从eureka服务器获取注册信息
+    service-url:
+      defaultZone: http://${eureka.host}:${eureka.port}/eureka/
 #  server:
 #    waitTimeInMsWhenSyncEmpty: 0
 #    enableSelfPreservation: false
+  host:  @eurekaHost@
+  port:  @eurekaPort@
 
 endpoints:
   restart:
