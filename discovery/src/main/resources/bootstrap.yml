@@ -15,6 +15,7 @@ eureka:
     hostname: discovery
     metadataMap: 
       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    preferIpAddress: true
   server:
     # 每隔X秒钟响应给客户端的实例列表就过期了，下次响应的时候要重新取
     #response-cache-auto-expiration-in-seconds: 5
