@@ -12,7 +12,7 @@ server:
 
 eureka:
   instance:
-#    prefer-ip-address: true
+    prefer-ip-address: true
     hostname: discovery
     metadataMap: 
       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
