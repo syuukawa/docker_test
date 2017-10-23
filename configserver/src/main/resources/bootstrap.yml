@@ -6,8 +6,6 @@
 spring:
   application:
     name: configserver
-  profiles:
-    active: native
   jackson:
     serialization:
       indent_output: true
