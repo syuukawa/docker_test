@@ -12,9 +12,8 @@ server:
 
 eureka:
   instance:
-#    prefer-ip-address: true
-    hostname: discovery
-    metadataMap: 
+#    hostname: discovery
+    metadataMap:
       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   server:
     # 每隔X秒钟响应给客户端的实例列表就过期了，下次响应的时候要重新取
@@ -34,7 +33,6 @@ eureka:
 #    enableSelfPreservation: false
   host:  @eurekaHost@
   port:  @eurekaPort@
-
 endpoints:
   restart:
     enabled: true
