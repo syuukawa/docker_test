@@ -12,7 +12,7 @@ spring:
 #          search-locations: ./config
 #          search-locations: /immerex/config
         git:
-          uri: https://github.com/syuukawa/docker_test/tree/master/configserver/src/main/resources/config
+          uri: https://github.com/syuukawa/docker_test/blob/master/configserver/src/main/resources/config/
 
 #  rabbitmq:
 #    host: 192.168.0.108
